@@ -1,6 +1,6 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "6min-exercise",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    // no dependency!
   }
 }

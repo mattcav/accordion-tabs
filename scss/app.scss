@@ -1,40 +1,158 @@
-@import "settings";
-@import "foundation";
+// settings
+$screen: "only screen";
+$large: 48em; // 768px
+$large-up: "#{$screen} and (min-width:#{$large})";
 
-// Or selectively include components
-// @import
-//   "foundation/components/accordion",
-//   "foundation/components/alert-boxes",
-//   "foundation/components/block-grid",
-//   "foundation/components/breadcrumbs",
-//   "foundation/components/button-groups",
-//   "foundation/components/buttons",
-//   "foundation/components/clearing",
-//   "foundation/components/dropdown",
-//   "foundation/components/dropdown-buttons",
-//   "foundation/components/flex-video",
-//   "foundation/components/forms",
-//   "foundation/components/grid",
-//   "foundation/components/inline-lists",
-//   "foundation/components/joyride",
-//   "foundation/components/keystrokes",
-//   "foundation/components/labels",
-//   "foundation/components/magellan",
-//   "foundation/components/orbit",
-//   "foundation/components/pagination",
-//   "foundation/components/panels",
-//   "foundation/components/pricing-tables",
-//   "foundation/components/progress-bars",
-//   "foundation/components/reveal",
-//   "foundation/components/side-nav",
-//   "foundation/components/split-buttons",
-//   "foundation/components/sub-nav",
-//   "foundation/components/switch",
-//   "foundation/components/tables",
-//   "foundation/components/tabs",
-//   "foundation/components/thumbs",
-//   "foundation/components/tooltips",
-//   "foundation/components/top-bar",
-//   "foundation/components/type",
-//   "foundation/components/offcanvas",
-//   "foundation/components/visibility";
+$lightGrey: #EFEFEF;
+
+// global
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+html, body {
+    font-size: 100%;
+    color: black;
+    background:white;
+}
+body {
+    cursor: default;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+a {
+    line-height: inherit;
+    text-decoration: none;
+}
+
+dl {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.6;
+    list-style-position: outside;
+}
+
+p {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-rendering: optimizelegibility;
+}
+
+// utils
+.clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+.container {
+    max-width: 40em;
+}
+// modules
+
+// tabs
+.tabs__wrapper {
+    background:$lightGrey;
+    overflow: hidden;
+}
+.tabs {
+    float: left;
+    width: 25%;
+    margin:0;
+}
+.tab {
+    display: block;
+    float: none;
+    position: inherit;
+    top: auto;
+    margin:0;
+    border-bottom:1px solid white;
+}
+.tab__trigger {
+    background: none repeat scroll 0 0 $lightGrey;
+    color: #222222;
+    display: block;
+    font-size: 1rem;
+    padding: 1rem .5rem;
+
+    &:active {
+        background:white;
+        color:$lightGrey;
+    }
+    @media #{$large-up} {
+        padding: 1rem 2rem;
+    }
+}
+.tabs-container {
+    float: left;
+    width: 75%;
+    background:white;
+}
+.tabs__content {
+    display: none;
+    float: left;
+    padding: 0 1rem;
+    width: 100%;
+    &:target {
+    display: block;
+    float: none;
+    }
+}
+
+// accordion
+.accordion {
+    position:relative;
+}
+.accordion__item {
+    display:block;
+    margin:0;
+    border-bottom:1px solid white;
+
+    @media #{$large-up} {
+        display:inline-block;
+        width:32.8%;
+    }
+
+    &:target {
+
+        .accordion__trigger {
+            background:white;
+            color:#ccc;
+        }
+
+        .accordion__content {
+            display:block;
+            @media #{$large-up} {
+                position:absolute;
+                left:0;
+            }
+        }
+    }  
+}
+
+.accordion__trigger {
+    background: none repeat scroll 0 0 $lightGrey;
+    color: #222222;
+    display: block;
+    font-size: 1rem;
+    padding: 1rem;
+
+    &:active {
+        background:white;
+        color:#ccc;
+    }
+}
+.accordion__content {
+    background:white;
+    padding:1rem;
+    display:none;  
+}
